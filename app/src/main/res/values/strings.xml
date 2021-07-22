@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ItuTptParis</string>
+    <string name="title_activity_accueil">AccueilActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_deconnexion">Déconnexion</string>
+
+    <string name="menu_accueil">Accueil</string>
+    <string name="menu_profil">Profil</string>
+
+    <string name="nom_utilisateur">Nom de l\'utilisateur</string>
+    <string name="prenom_utilisateur">Prénom(s) de l\'utilisateur</string>
 </resources>
