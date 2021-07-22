@@ -1,5 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+
+    ext {
+        lifecycle = "2.2.0"
+        retrofit = "2.7.1"
+        butterKnife = "10.2.3"
+    }
+
     repositories {
         google()
         jcenter()
