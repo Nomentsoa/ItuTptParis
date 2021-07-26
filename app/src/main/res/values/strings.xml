@@ -13,4 +13,8 @@
 
     <string name="nom_utilisateur">Nom de l\'utilisateur</string>
     <string name="prenom_utilisateur">Prénom(s) de l\'utilisateur</string>
+    <string name="user_name">Nom d\'utilisateur</string>
+    <string name="connexion">Connexion</string>
+    <string name="mpd">Mot de passe</string>
+
 </resources>

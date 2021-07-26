@@ -6,6 +6,15 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    //dimension login
+    <dimen name="card_view_elevation">5dp</dimen>
+    <dimen name="corner_radius">10dp</dimen>
+    <dimen name="width_login_cardview">250dp</dimen>
+    <dimen name="heigth_login_cardview">250dp</dimen>
+    <dimen name="main_paddin">10dp</dimen>
+    <dimen name="login_text_size">18sp</dimen>
+    <dimen name="margin_top_between_widge_login">20dp</dimen>
+
     <dimen name="width_profil_header_navigation">75dp</dimen>
     <dimen name="heigth_profil_header_navigation">75dp</dimen>
     <dimen name="border_with_profil_header_navigation">2dp</dimen>
