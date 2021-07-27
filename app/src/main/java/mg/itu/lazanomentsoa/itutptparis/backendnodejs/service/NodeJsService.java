@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NodeJsService {
-    private static final  String BASE_URL_NODEJS = "http://localhost:3000/tptParis/";
+    private static final  String BASE_URL_NODEJS = "http://192.168.1.135:3000/api/";
 
     private static Retrofit retrofitNodeJs = new Retrofit.Builder()
             .baseUrl(BASE_URL_NODEJS)

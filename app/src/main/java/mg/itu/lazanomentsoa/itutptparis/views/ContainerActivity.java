@@ -1,8 +1,11 @@
 package mg.itu.lazanomentsoa.itutptparis.views;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -17,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.databinding.ActivityContainerBinding;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 
 public class ContainerActivity extends AppCompatActivity {
 
@@ -40,6 +44,8 @@ public class ContainerActivity extends AppCompatActivity {
 //            }
 //        });
 
+        //set affichage dans navigationheader
+        setDisplayNavigateurHeader();
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -62,9 +68,34 @@ public class ContainerActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_deconnexion:
+                deconnexion();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_accueil);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void setDisplayNavigateurHeader(){
+        View viewHeader = binding.navView.getHeaderView(0);
+        TextView tvNomPrenom = (TextView) viewHeader.findViewById(R.id.tv_nom_prenom);
+        tvNomPrenom.setText(SessionManager.getInstance(this).getNomConnectedUser()+" "+SessionManager.getInstance(this).getPrenomConnectedUser());
+        TextView tvEmail = (TextView) viewHeader.findViewById(R.id.tv_email);
+        tvEmail.setText(SessionManager.getInstance(this).getEmailConnectedUser());
+    }
+
+    private void deconnexion(){
+        SessionManager.ClearPrefSessionManager(this);
+        startActivity(new Intent(ContainerActivity.this, LoginActivity.class));
     }
 }
