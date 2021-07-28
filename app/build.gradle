@@ -2,6 +2,28 @@ plugins {
     id 'com.android.application'
 }
 
+
+def defaultPathBase = new File(".").getCanonicalPath()
+def debug_keystore_path
+def release_keystore_path
+
+if (System.properties['os.name'].toLowerCase().contains('windows')) {
+    println "Compiling on Windows ..."
+    debug_keystore_path = defaultPathBase + '\\app\\keystores\\debug.keystore'
+    release_keystore_path = defaultPathBase + '\\app\\keystores\\release.keystore'
+
+} else {
+    println "Compiling on UNIX ..."
+    debug_keystore_path = defaultPathBase + '/app/keystores/debug.keystore'
+    release_keystore_path = defaultPathBase + '/app/keystores/release.keystore'
+}
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -16,10 +38,38 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storePassword keystoreProperties['releaseStorePassword']
+            storeFile file(release_keystore_path)
+
+        }
+        debug {
+            keyAlias keystoreProperties['debugKeyAlias']
+            keyPassword keystoreProperties['debugKeyPassword']
+            storePassword keystoreProperties['debugStorePassword']
+            storeFile file(debug_keystore_path)
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug_boulot_laza {
+//          debuggable true
+            signingConfig signingConfigs.debug
+            buildConfigField "String", 'BASE_URL_NODE', '"http://10.163.1.166:3000/api/"'
+        }
+
+        debug_home_laza {
+//          debuggable true
+            signingConfig signingConfigs.debug
+            buildConfigField "String", 'BASE_URL_NODE', '"http://192.168.1.135:3000/api/"'
         }
     }
     compileOptions {
