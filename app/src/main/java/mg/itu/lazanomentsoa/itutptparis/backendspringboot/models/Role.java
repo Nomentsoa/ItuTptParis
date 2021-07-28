@@ -1,4 +1,4 @@
-package mg.itu.lazanomentsoa.itutptparis.backendnodejs.models;
+package mg.itu.lazanomentsoa.itutptparis.backendspringboot.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -2,27 +2,25 @@ package mg.itu.lazanomentsoa.itutptparis.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.navigation.NavigationView;
 
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.databinding.ActivityContainerBinding;
 import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 
-public class ContainerActivity extends AppCompatActivity {
+public class ContainerActivity extends AbstractBaseActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityContainerBinding binding;
@@ -98,4 +96,5 @@ public class ContainerActivity extends AppCompatActivity {
         SessionManager.ClearPrefSessionManager(this);
         startActivity(new Intent(ContainerActivity.this, LoginActivity.class));
     }
+
 }

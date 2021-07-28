@@ -4,7 +4,10 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.List;
+
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +59,24 @@ public class NodeJsRepository {
         });
 
         return utilisateurMutableLiveData;
+    }
+
+
+    public MutableLiveData<List<Match>> getAllMatchAvenir(){
+        MutableLiveData<List<Match>> allMatch= new MutableLiveData<>();
+        nodeJsEndPoints.getAllMatchAVenir().enqueue(new Callback<List<Match>>() {
+            @Override
+            public void onResponse(Call<List<Match>> call, Response<List<Match>> response) {
+                allMatch.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Match>> call, Throwable t) {
+                allMatch.setValue(null);
+            }
+        });
+
+        return allMatch;
     }
 
 }

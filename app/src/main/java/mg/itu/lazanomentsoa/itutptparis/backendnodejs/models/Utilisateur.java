@@ -3,6 +3,8 @@ package mg.itu.lazanomentsoa.itutptparis.backendnodejs.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import mg.itu.lazanomentsoa.itutptparis.backendspringboot.models.Role;
+
 public class Utilisateur extends BaseRetour{
     @SerializedName("idRole")
     @Expose

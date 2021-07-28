@@ -3,7 +3,7 @@ package mg.itu.lazanomentsoa.itutptparis.backendspringboot.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Equipe {
+public class Categorie {
     @SerializedName("id")
     @Expose
     private int id;
@@ -12,9 +12,9 @@ public class Equipe {
     @Expose
     private String nom;
 
-    @SerializedName("image")
+    @SerializedName("description")
     @Expose
-    private String image;
+    private String description;
 
     public int getId() {
         return id;
@@ -32,11 +32,11 @@ public class Equipe {
         this.nom = nom;
     }
 
-    public String getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
