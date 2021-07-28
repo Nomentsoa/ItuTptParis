@@ -43,6 +43,8 @@ public class Match {
     @Expose
     private Equipe equipe2;
 
+    @SerializedName("codeMacthNull")
+
 
     public String getId() {
         return id;

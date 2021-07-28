@@ -12,4 +12,10 @@
     <color name="theme_1">#0c314e</color>
     <color name="theme_2">#4988b9</color>
     <color name="theme_3">#bce6fd</color>
+
+    <color name="color_back_ground">#faf8f6</color>
+
+    <color name="colorNoirx">#060606</color>
+
+    <color name="ed_border">#d4606060</color>
 </resources>

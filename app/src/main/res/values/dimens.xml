@@ -9,13 +9,22 @@
     //dimension login
     <dimen name="card_view_elevation">5dp</dimen>
     <dimen name="corner_radius">10dp</dimen>
+    <dimen name="corner_radius_main">5dp</dimen>
     <dimen name="width_login_cardview">250dp</dimen>
     <dimen name="heigth_login_cardview">250dp</dimen>
     <dimen name="main_paddin">10dp</dimen>
+    <dimen name="main_margin">10dp</dimen>
     <dimen name="login_text_size">18sp</dimen>
     <dimen name="margin_top_between_widge_login">20dp</dimen>
 
     <dimen name="width_profil_header_navigation">75dp</dimen>
     <dimen name="heigth_profil_header_navigation">75dp</dimen>
     <dimen name="border_with_profil_header_navigation">2dp</dimen>
+
+    // dimession item match liste
+    <dimen name="size_text_equipe">11sp</dimen>∂
+    <dimen name="size_text_titre_button">7sp</dimen>
+    <dimen name="size_text_quote_button">12sp</dimen>
+    <dimen name="width_heigth_button_match_list">40dp</dimen>
+
 </resources>

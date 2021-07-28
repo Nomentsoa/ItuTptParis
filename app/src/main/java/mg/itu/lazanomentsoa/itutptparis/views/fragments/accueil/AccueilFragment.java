@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentAccueilBinding;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
+import mg.itu.lazanomentsoa.itutptparis.views.adapter.MatchListAdapter;
 
 
 public class AccueilFragment extends AbstractBaseFragment {
@@ -20,6 +22,7 @@ public class AccueilFragment extends AbstractBaseFragment {
     private AccueilViewModel accueilViewModel;
     private FragmentAccueilBinding binding;
     private LifecycleOwner lifecycleOwner;
+    private MatchListAdapter matchListAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,9 +34,20 @@ public class AccueilFragment extends AbstractBaseFragment {
 
         showLoading(false);
         accueilViewModel.getAllMatchAvenir().observe(lifecycleOwner, matches -> {
-            dismissLoading();
             Log.i(TAG, "match => " + matches);
+            if(matches == null){
+                binding.tvMatchNull.setVisibility(View.VISIBLE);
+                binding.llAccueilMain.setVisibility(View.GONE);
+            }else{
+                binding.tvMatchNull.setVisibility(View.GONE);
+                binding.llAccueilMain.setVisibility(View.VISIBLE);
 
+                matchListAdapter = new MatchListAdapter(matches);
+                binding.rvMatch.setHasFixedSize(true);
+                binding.rvMatch.setLayoutManager(new LinearLayoutManager(getContext()));
+                binding.rvMatch.setAdapter(matchListAdapter);
+            }
+            dismissLoading();
         });
         return root;
     }
