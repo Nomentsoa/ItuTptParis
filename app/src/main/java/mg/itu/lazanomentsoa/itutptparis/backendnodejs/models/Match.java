@@ -3,6 +3,8 @@ package mg.itu.lazanomentsoa.itutptparis.backendnodejs.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 import mg.itu.lazanomentsoa.itutptparis.backendspringboot.models.Categorie;
 import mg.itu.lazanomentsoa.itutptparis.backendspringboot.models.Equipe;
 
@@ -13,7 +15,7 @@ public class Match {
 
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
 
     @SerializedName("heure")
     @Expose
@@ -43,7 +45,11 @@ public class Match {
     @Expose
     private Equipe equipe2;
 
-    @SerializedName("codeMacthNull")
+    @SerializedName("coteMatchNull")
+    @Expose
+    private int coteMatchNull;
+
+
 
 
     public String getId() {
@@ -54,11 +60,12 @@ public class Match {
         this.id = id;
     }
 
-    public String getDate() {
+
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -116,5 +123,13 @@ public class Match {
 
     public void setEquipe2(Equipe equipe2) {
         this.equipe2 = equipe2;
+    }
+
+    public int getCoteMatchNull() {
+        return coteMatchNull;
+    }
+
+    public void setCoteMatchNull(int coteMatchNull) {
+        this.coteMatchNull = coteMatchNull;
     }
 }
