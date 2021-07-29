@@ -16,6 +16,7 @@
     <string name="user_name">Nom d\'utilisateur</string>
     <string name="connexion">Connexion</string>
     <string name="mpd">Mot de passe</string>
+    <string name="recherche">Recherche...</string>
 
     <string name="erreur_connexion">Une erreur c\'est produite, veuillez reéssayer ulterieurement</string>
 </resources>
