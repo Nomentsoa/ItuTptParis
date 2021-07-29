@@ -1,4 +1,4 @@
-package mg.itu.lazanomentsoa.itutptparis.views.fragments.profil;
+package mg.itu.lazanomentsoa.itutptparis.views.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentProfilBinding;
+import mg.itu.lazanomentsoa.itutptparis.views.fragments.profil.ProfilViewModel;
 
 
 public class ProfilFragment extends Fragment {

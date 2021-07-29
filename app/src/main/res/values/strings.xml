@@ -10,6 +10,8 @@
 
     <string name="menu_accueil">Accueil</string>
     <string name="menu_profil">Profil</string>
+    <string name="menu_map">Agence</string>
+    <string name="menu_qrcde">Scanne QRCode</string>
 
     <string name="nom_utilisateur">Nom de l\'utilisateur</string>
     <string name="prenom_utilisateur">Prénom(s) de l\'utilisateur</string>
@@ -19,4 +21,6 @@
     <string name="recherche">Recherche...</string>
 
     <string name="erreur_connexion">Une erreur c\'est produite, veuillez reéssayer ulterieurement</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

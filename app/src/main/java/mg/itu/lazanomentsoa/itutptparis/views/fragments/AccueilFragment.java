@@ -1,7 +1,6 @@
-package mg.itu.lazanomentsoa.itutptparis.views.fragments.accueil;
+package mg.itu.lazanomentsoa.itutptparis.views.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,10 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentAccueilBinding;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
@@ -23,6 +26,7 @@ public class AccueilFragment extends AbstractBaseFragment {
     private FragmentAccueilBinding binding;
     private LifecycleOwner lifecycleOwner;
     private MatchListAdapter matchListAdapter;
+    private List<Match> matchList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,20 +38,44 @@ public class AccueilFragment extends AbstractBaseFragment {
 
         showLoading(false);
         accueilViewModel.getAllMatchAvenir().observe(lifecycleOwner, matches -> {
-            Log.i(TAG, "match => " + matches);
             if(matches == null){
+
                 binding.tvMatchNull.setVisibility(View.VISIBLE);
                 binding.llAccueilMain.setVisibility(View.GONE);
             }else{
+
+                matchList = matches;
+
                 binding.tvMatchNull.setVisibility(View.GONE);
                 binding.llAccueilMain.setVisibility(View.VISIBLE);
 
-                matchListAdapter = new MatchListAdapter(matches);
+                matchListAdapter = new MatchListAdapter(matchList);
                 binding.rvMatch.setHasFixedSize(true);
                 binding.rvMatch.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.rvMatch.setAdapter(matchListAdapter);
             }
             dismissLoading();
+        });
+
+        binding.llBtnRecherche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String txtRecherche = binding.etRecherche.getText().toString();
+                if(txtRecherche.length() != 0){
+                    List<Match> matchListRecherche = new ArrayList<>();
+                    for (Match match : matchList ) {
+                        if(match.getEquipe1().getNom().toLowerCase().contains(txtRecherche.toLowerCase()) || match.getEquipe2().getNom().toLowerCase().contains(txtRecherche.toLowerCase())){
+                            matchListRecherche.add(match);
+                        }
+                    }
+                    matchListAdapter.setNewMatchList(matchListRecherche);
+
+
+                }else{
+                    matchListAdapter.setNewMatchList(matchList);
+                }
+            }
         });
         return root;
     }

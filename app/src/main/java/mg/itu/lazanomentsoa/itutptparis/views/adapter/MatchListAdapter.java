@@ -69,4 +69,9 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
             btnNull = (Button)itemView.findViewById(R.id.btn_null);
         }
     }
+
+    public void setNewMatchList(List<Match> newMatchList){
+        this.matches = newMatchList;
+        notifyDataSetChanged();
+    }
 }

@@ -7,15 +7,29 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.accueil.AccueilFragment"
+        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.AccueilFragment"
         android:label="@string/menu_accueil"
         tools:layout="@layout/fragment_accueil" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.profil.ProfilFragment"
+        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.ProfilFragment"
         android:label="@string/menu_profil"
         tools:layout="@layout/fragment_profil" />
+
+
+    <fragment
+        android:id="@+id/nav_scane_qrcode"
+        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.QrcodeFragment"
+        android:label="@string/menu_qrcde"
+        tools:layout="@layout/fragment_qrcode" />
+
+
+    <fragment
+        android:id="@+id/nav_find_agence"
+        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.MapFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_map" />
 
 
 </navigation>
