@@ -27,4 +27,9 @@
     <dimen name="size_text_quote_button">12sp</dimen>
     <dimen name="width_heigth_button_match_list">40dp</dimen>
 
+    // dimension dialog pari
+    <dimen name="txt_pari_dialog">16sp</dimen>
+
+
+
 </resources>

@@ -1,5 +1,6 @@
 package mg.itu.lazanomentsoa.itutptparis.views.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,12 +19,16 @@ import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
+import mg.itu.lazanomentsoa.itutptparis.views.fragments.AccueilFragment;
+import mg.itu.lazanomentsoa.itutptparis.views.fragments.PariDialogFragment;
 
 public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.ViewHolder> {
     private List<Match> matches;
+    private Context context;
     SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
 
-    public MatchListAdapter(List<Match> matches) {
+    public MatchListAdapter(List<Match> matches, Context context) {
         this.matches = matches;
     }
 
@@ -47,6 +53,30 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
 
         String date = fromUser.format(match.getDate());
         holder.tvDateHeure.setText(date + " à " + match.getHeure());
+
+        holder.btnEquipe1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), match.getEquipe1(), "mlkjmlkj", 3);
+                AccueilFragment.showPariDialog(pari, match.getCoteEquipe1());
+            }
+        });
+
+        holder.btnEquipe2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), match.getEquipe2(), "mlkjmlkj", 3);
+                AccueilFragment.showPariDialog(pari, match.getCoteEquip2());
+            }
+        });
+
+        holder.btnNull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), null, "mlkjmlkj", 3);
+                AccueilFragment.showPariDialog(pari, match.getCoteMatchNull());
+            }
+        });
     }
 
     @Override
@@ -74,4 +104,6 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
         this.matches = newMatchList;
         notifyDataSetChanged();
     }
+
+
 }

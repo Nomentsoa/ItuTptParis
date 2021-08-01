@@ -1,11 +1,13 @@
 package mg.itu.lazanomentsoa.itutptparis.views.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentAccueilBinding;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
@@ -27,6 +30,7 @@ public class AccueilFragment extends AbstractBaseFragment {
     private LifecycleOwner lifecycleOwner;
     private MatchListAdapter matchListAdapter;
     private List<Match> matchList;
+    public static Context myContext;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +39,8 @@ public class AccueilFragment extends AbstractBaseFragment {
         lifecycleOwner = this;
         binding = FragmentAccueilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        myContext = getActivity();
 
         showLoading(false);
         accueilViewModel.getAllMatchAvenir().observe(lifecycleOwner, matches -> {
@@ -49,7 +55,7 @@ public class AccueilFragment extends AbstractBaseFragment {
                 binding.tvMatchNull.setVisibility(View.GONE);
                 binding.llAccueilMain.setVisibility(View.VISIBLE);
 
-                matchListAdapter = new MatchListAdapter(matchList);
+                matchListAdapter = new MatchListAdapter(matchList, myContext);
                 binding.rvMatch.setHasFixedSize(true);
                 binding.rvMatch.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.rvMatch.setAdapter(matchListAdapter);
@@ -77,7 +83,15 @@ public class AccueilFragment extends AbstractBaseFragment {
                 }
             }
         });
+
+
         return root;
+    }
+
+    public static void showPariDialog(Pari pari, int cote){
+        PariDialogFragment pariDialogFragment = new PariDialogFragment(pari, cote);
+        pariDialogFragment.show(((FragmentActivity)myContext).getSupportFragmentManager(), "transaction");
+
     }
 
     @Override

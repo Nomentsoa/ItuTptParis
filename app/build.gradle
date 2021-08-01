@@ -71,6 +71,12 @@ android {
             signingConfig signingConfigs.debug
             buildConfigField "String", 'BASE_URL_NODE', '"http://192.168.1.135:3000/api/"'
         }
+
+        debug_phone_laza {
+//          debuggable true
+            signingConfig signingConfigs.debug
+            buildConfigField "String", 'BASE_URL_NODE', '"http://192.168.43.165:3000/api/"'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

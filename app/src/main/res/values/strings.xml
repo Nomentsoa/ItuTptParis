@@ -23,4 +23,9 @@
     <string name="erreur_connexion">Une erreur c\'est produite, veuillez reéssayer ulterieurement</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="equipe_gagnante">Equipe gagnante: </string>
+    <string name="cote_selectionne">Cote: </string>
+    <string name="annuler">Annuler</string>
+    <string name="valider">Valider</string>
+    <string name="somme_a_miser">Somme à miser</string>
 </resources>

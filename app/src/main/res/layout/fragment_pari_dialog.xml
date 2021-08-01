@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/main_paddin">
+
+    <TextView
+        android:id="@+id/tv_label_equipe_gagnante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/equipe_gagnante"
+        android:textColor="@color/colorNoirx"
+        android:textSize="@dimen/txt_pari_dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_valeur_equipe_gagnante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="France"
+        android:textColor="@color/colorNoirx"
+        android:textSize="@dimen/txt_pari_dialog"
+        app:layout_constraintStart_toEndOf="@+id/tv_label_equipe_gagnante"
+        app:layout_constraintTop_toTopOf="@+id/tv_label_equipe_gagnante"
+        android:layout_marginLeft="@dimen/main_margin"/>
+
+    <TextView
+        android:id="@+id/tv_label_quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cote_selectionne"
+        android:textColor="@color/colorNoirx"
+        android:textSize="@dimen/txt_pari_dialog"
+        app:layout_constraintStart_toStartOf="@+id/tv_label_equipe_gagnante"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_equipe_gagnante"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_valeur_quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/colorNoirx"
+        android:textSize="@dimen/txt_pari_dialog"
+        app:layout_constraintStart_toEndOf="@+id/tv_label_quote"
+        app:layout_constraintTop_toTopOf="@+id/tv_label_quote"
+        android:layout_marginLeft="@dimen/main_margin"/>
+
+
+    <EditText
+        android:id="@+id/et_somme"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/main_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_quote"
+        android:background="@drawable/custom_layout_border"
+        android:textSize="@dimen/txt_pari_dialog"
+        android:paddingLeft="@dimen/main_paddin"
+        android:hint="@string/somme_a_miser"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_somme"
+        android:layout_marginTop="@dimen/main_margin"
+        android:layout_marginBottom="@dimen/main_margin"
+        android:gravity="center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_btn_annuler"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:textSize="@dimen/txt_pari_dialog"
+            android:text="Annuler"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_cancel_button"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/annuler"
+                android:textColor="@color/colorNoirx"
+                android:textSize="@dimen/txt_pari_dialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_valider"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textSize="@dimen/txt_pari_dialog"
+            android:text="@string/valider"
+            android:textAllCaps="false"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
