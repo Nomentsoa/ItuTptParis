@@ -28,4 +28,6 @@
     <string name="annuler">Annuler</string>
     <string name="valider">Valider</string>
     <string name="somme_a_miser">Somme à miser</string>
+    <string name="mise_obligatoire">Il faut que vous miser un somme !</string>
+    <string name="erreur_mise_pari">Erreur !</string>
 </resources>

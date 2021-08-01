@@ -29,6 +29,7 @@
 
     // dimension dialog pari
     <dimen name="txt_pari_dialog">16sp</dimen>
+    <dimen name="txt_error">12sp</dimen>
 
 
 

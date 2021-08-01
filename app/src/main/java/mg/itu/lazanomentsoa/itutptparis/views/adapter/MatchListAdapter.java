@@ -20,15 +20,18 @@ import java.util.List;
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.views.fragments.AccueilFragment;
 import mg.itu.lazanomentsoa.itutptparis.views.fragments.PariDialogFragment;
 
-public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.ViewHolder> {
+public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.ViewHolder> {
     private List<Match> matches;
     private Context context;
     SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+    private String idUserConnected;
 
     public MatchListAdapter(List<Match> matches, Context context) {
+        this.idUserConnected = SessionManager.getInstance(context).getIdConnectedUser();
         this.matches = matches;
     }
 
@@ -57,7 +60,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
         holder.btnEquipe1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pari pari = new Pari(match.getId(), match.getEquipe1(), "mlkjmlkj", 3);
+                Pari pari = new Pari(match.getId(), match.getEquipe1(), idUserConnected);
                 AccueilFragment.showPariDialog(pari, match.getCoteEquipe1());
             }
         });
@@ -65,7 +68,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
         holder.btnEquipe2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pari pari = new Pari(match.getId(), match.getEquipe2(), "mlkjmlkj", 3);
+                Pari pari = new Pari(match.getId(), match.getEquipe2(), idUserConnected);
                 AccueilFragment.showPariDialog(pari, match.getCoteEquip2());
             }
         });
@@ -73,7 +76,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.View
         holder.btnNull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pari pari = new Pari(match.getId(), null, "mlkjmlkj", 3);
+                Pari pari = new Pari(match.getId(), null, idUserConnected);
                 AccueilFragment.showPariDialog(pari, match.getCoteMatchNull());
             }
         });

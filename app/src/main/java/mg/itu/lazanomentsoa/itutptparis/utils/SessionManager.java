@@ -69,6 +69,6 @@ public class SessionManager {
     }
 
     public String getIdConnectedUser(){
-        return sharedPreferences.getString(_PREF_EMAIL_CONNECTED_USER,null);
+        return sharedPreferences.getString(_PREF_ID_CONNECTED_USER,null);
     }
 }

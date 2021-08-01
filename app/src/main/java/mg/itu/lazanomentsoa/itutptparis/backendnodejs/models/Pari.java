@@ -29,6 +29,12 @@ public class Pari {
         this.mise = mise;
     }
 
+    public Pari(String idMatch, Equipe equipe, String idUser) {
+        this.idMatch = idMatch;
+        this.equipe = equipe;
+        this.idUser = idUser;
+    }
+
     public String getIdMatch() {
         return idMatch;
     }

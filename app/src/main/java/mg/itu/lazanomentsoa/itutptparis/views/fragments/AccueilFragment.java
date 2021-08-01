@@ -18,6 +18,7 @@ import java.util.List;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentAccueilBinding;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
 import mg.itu.lazanomentsoa.itutptparis.views.adapter.MatchListAdapter;

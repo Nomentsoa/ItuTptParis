@@ -10,7 +10,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.service.NodeJsRepository;
 
 public class AccueilViewModel extends AndroidViewModel {
@@ -28,5 +30,9 @@ public class AccueilViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<Match>> getAllMatchAvenir(){
         return nodeJsRepository.getAllMatchAvenir();
+    }
+
+    public MutableLiveData<BaseRetour> createPari(Pari pari){
+        return nodeJsRepository.createPari(pari);
     }
 }

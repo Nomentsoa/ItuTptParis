@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,6 +79,25 @@ public class NodeJsRepository {
         });
 
         return allMatch;
+    }
+
+    // creation de pari
+    public MutableLiveData<BaseRetour> createPari(Pari pari){
+        MutableLiveData<BaseRetour> baseRetourMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.createPari(pari).enqueue(new Callback<BaseRetour>() {
+            @Override
+            public void onResponse(Call<BaseRetour> call, Response<BaseRetour> response) {
+                Log.i("pari"," pari response x=> "+ response.code());
+                baseRetourMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<BaseRetour> call, Throwable t) {
+                Log.e("pari"," pari erreur =>  ");
+                baseRetourMutableLiveData.setValue(null);
+            }
+        });
+        return baseRetourMutableLiveData;
     }
 
 }
