@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
@@ -98,6 +99,23 @@ public class NodeJsRepository {
             }
         });
         return baseRetourMutableLiveData;
+    }
+
+    //get all localisation agence
+    public MutableLiveData<List<LocalisationAgence>> getAllLocalisationAgence(){
+        MutableLiveData<List<LocalisationAgence>> listMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.getAllLocalisationAgence().enqueue(new Callback<List<LocalisationAgence>>() {
+            @Override
+            public void onResponse(Call<List<LocalisationAgence>> call, Response<List<LocalisationAgence>> response) {
+                listMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<LocalisationAgence>> call, Throwable t) {
+                listMutableLiveData.setValue(null);
+            }
+        });
+        return listMutableLiveData;
     }
 
 }

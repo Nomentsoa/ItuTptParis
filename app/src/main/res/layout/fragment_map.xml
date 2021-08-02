@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.MapFragment">
+    tools:context=".views.fragments.AccueilFragment"
+    android:background="@color/color_back_ground"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_accueil_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_margin="@dimen/main_margin"
+            app:cardCornerRadius="@dimen/corner_radius_main"
+            >
+          <Spinner
+              android:id="@+id/sp_agence"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_gravity="center"
+              android:layout_marginLeft="@dimen/main_margin"
+              android:layout_marginRight="@dimen/main_margin"
+              android:background="@drawable/custom_layout_border"
+              android:paddingLeft="@dimen/main_margin"
+              />
 
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/main_margin"
+            app:cardCornerRadius="@dimen/corner_radius_main"
+            android:padding="@dimen/main_paddin">
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

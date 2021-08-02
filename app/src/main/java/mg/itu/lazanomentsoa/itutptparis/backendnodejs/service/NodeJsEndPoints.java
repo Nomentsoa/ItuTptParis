@@ -3,6 +3,7 @@ package mg.itu.lazanomentsoa.itutptparis.backendnodejs.service;
 import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
@@ -24,4 +25,8 @@ public interface NodeJsEndPoints {
     //create pari
     @POST("pari")
     Call<BaseRetour> createPari(@Body Pari pari);
+
+    // localisation agence
+    @GET("localisationAgence")
+    Call<List<LocalisationAgence>> getAllLocalisationAgence();
 }
