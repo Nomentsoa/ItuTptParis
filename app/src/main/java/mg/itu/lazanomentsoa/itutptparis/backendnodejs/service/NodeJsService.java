@@ -2,12 +2,11 @@ package mg.itu.lazanomentsoa.itutptparis.backendnodejs.service;
 
 
 
-import mg.itu.lazanomentsoa.itutptparis.BuildConfig;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NodeJsService {
-    private static final  String BASE_URL_NODEJS = BuildConfig.BASE_URL_NODE;
+    private static final  String BASE_URL_NODEJS = "http://10.163.1.166:3000/api/";
 
     private static Retrofit retrofitNodeJs = new Retrofit.Builder()
             .baseUrl(BASE_URL_NODEJS)
