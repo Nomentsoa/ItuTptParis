@@ -1,5 +1,6 @@
 package mg.itu.lazanomentsoa.itutptparis.views.fragments;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentMapBinding;
+import mg.itu.lazanomentsoa.itutptparis.utils.GpsTraker;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.LocalisationAgenceViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
 import mg.itu.lazanomentsoa.itutptparis.views.adapter.LocalisationAgenceSpinnerAdapter;
@@ -33,22 +37,18 @@ public class MapFragment extends AbstractBaseFragment {
     private LifecycleOwner lifecycleOwner;
     private LocalisationAgenceSpinnerAdapter localisationAgenceSpinnerAdapter;
 
+    private GpsTraker gpsTracker;
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
+            LatLng sydney = getLocation();
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.setMinZoomPreference(16.0f);
+            googleMap.setMaxZoomPreference(20.0f);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         }
     };
 
@@ -65,6 +65,10 @@ public class MapFragment extends AbstractBaseFragment {
                              Bundle savedInstanceState) {
         binding = FragmentMapBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        checkPermission();
+
+
 
         lifecycleOwner = this;
 
@@ -101,6 +105,32 @@ public class MapFragment extends AbstractBaseFragment {
             mapFragment.getMapAsync(callback);
         }
 
+
+
         return root;
+    }
+
+    private void checkPermission(){
+        try {
+            if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public LatLng getLocation(){
+        gpsTracker = new GpsTraker(getContext());
+        if(gpsTracker.canGetLocation()){
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            Log.i(TAG, "log => "+longitude+" lat => "+latitude);
+            return new LatLng(latitude, longitude);
+        }else{
+            gpsTracker.showSettingsAlert();
+            return null;
+        }
     }
 }
