@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
-import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentAccueilBinding;
-import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
 import mg.itu.lazanomentsoa.itutptparis.views.adapter.MatchListAdapter;
@@ -31,7 +28,7 @@ public class AccueilFragment extends AbstractBaseFragment {
     private LifecycleOwner lifecycleOwner;
     private MatchListAdapter matchListAdapter;
     private List<Match> matchList;
-    public static Context myContext;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,11 +86,7 @@ public class AccueilFragment extends AbstractBaseFragment {
         return root;
     }
 
-    public static void showPariDialog(Pari pari, int cote){
-        PariDialogFragment pariDialogFragment = new PariDialogFragment(pari, cote);
-        pariDialogFragment.show(((FragmentActivity)myContext).getSupportFragmentManager(), "transaction");
 
-    }
 
     @Override
     public void onDestroyView() {

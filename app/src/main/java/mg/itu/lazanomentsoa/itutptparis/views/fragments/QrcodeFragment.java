@@ -29,7 +29,10 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
 import mg.itu.lazanomentsoa.itutptparis.R;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentQrcodeBinding;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.utils.StringConstant;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.QRCodeViewModel;
 import mg.itu.lazanomentsoa.itutptparis.views.AbstractBaseFragment;
@@ -100,6 +103,8 @@ public class QrcodeFragment extends AbstractBaseFragment {
                                 btnCoteEquipe1.setText(retourMatch.getMatch().getCoteEquipe1()+"");
                                 btnCoteEquipe2.setText(retourMatch.getMatch().getCoteEquip2()+"");
                                 btnCoteNull.setText(retourMatch.getMatch().getCoteMatchNull()+"");
+
+                               listenerButtonMatch(retourMatch.getMatch());
                             }
                         }
                         dismissLoading();
@@ -136,6 +141,34 @@ public class QrcodeFragment extends AbstractBaseFragment {
         btnCoteEquipe2 = view.findViewById(R.id.btn_equipe2);
         btnCoteNull = view.findViewById(R.id.btn_null);
 
+
+
+    }
+
+    private void listenerButtonMatch(Match match){
+        btnCoteEquipe1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), match.getEquipe1(), SessionManager.getInstance(getContext()).getIdConnectedUser());
+                AccueilFragment.showPariDialog(pari, match.getCoteEquipe1());
+            }
+        });
+
+        btnCoteEquipe2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), match.getEquipe2(), SessionManager.getInstance(getContext()).getIdConnectedUser());
+                AccueilFragment.showPariDialog(pari, match.getCoteEquip2());
+            }
+        });
+
+        btnCoteNull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pari pari = new Pari(match.getId(), null, SessionManager.getInstance(getContext()).getIdConnectedUser());
+                AccueilFragment.showPariDialog(pari, match.getCoteMatchNull());
+            }
+        });
     }
 
     private void initialiseDetectorsAndSources() {
