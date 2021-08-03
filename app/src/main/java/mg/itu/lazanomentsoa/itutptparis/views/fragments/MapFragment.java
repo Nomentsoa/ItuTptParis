@@ -39,15 +39,18 @@ public class MapFragment extends AbstractBaseFragment {
 
     private GpsTraker gpsTracker;
 
+    private  GoogleMap mGoogleMap;
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = getLocation();
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-            googleMap.setMinZoomPreference(16.0f);
-            googleMap.setMaxZoomPreference(20.0f);
+            mGoogleMap = googleMap;
+//            LatLng agence = getLocation();
+//            googleMap.addMarker(new MarkerOptions().position(agence).title("Agence"));
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(agence));
+//            googleMap.setMinZoomPreference(16.0f);
+//            googleMap.setMaxZoomPreference(20.0f);
             googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         }
     };
@@ -85,6 +88,16 @@ public class MapFragment extends AbstractBaseFragment {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     LocalisationAgence localisationAgence = (LocalisationAgence)parent.getItemAtPosition(position);
                     Toast.makeText(getContext(), "agence => " +localisationAgence.getAgence().getNom(), Toast.LENGTH_LONG).show();
+
+                    LatLng agence = new LatLng(Double.parseDouble(localisationAgence.getLatitude()), Double.parseDouble(localisationAgence.getLongitude()));
+                    //LatLng agence = new LatLng(-20.286251, 45.985499);
+                    //LatLng agence = getLocation();
+
+                    mGoogleMap.addMarker(new MarkerOptions().position(agence).title("Agence"));
+                    mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(agence));
+                    mGoogleMap.setMinZoomPreference(17.0f);
+                    mGoogleMap.setMaxZoomPreference(20.0f);
+
                 }
 
                 @Override
