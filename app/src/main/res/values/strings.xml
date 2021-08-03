@@ -30,4 +30,8 @@
     <string name="somme_a_miser">Somme à miser</string>
     <string name="mise_obligatoire">Il faut que vous miser un somme !</string>
     <string name="erreur_mise_pari">Erreur !</string>
+
+    //scanne qrcode
+    <string name="scanne_qr_code">Scanne QrCode</string>
+    <string name="scanne_qr_code_arreter">Scanne QrCode arreté</string>
 </resources>

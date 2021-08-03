@@ -5,6 +5,8 @@ buildscript {
         lifecycle = "2.2.0"
         retrofit = "2.7.1"
         butterKnife = "10.2.3"
+        map = "17.0.1"
+        vision = "20.1.3"
     }
 
     repositories {
