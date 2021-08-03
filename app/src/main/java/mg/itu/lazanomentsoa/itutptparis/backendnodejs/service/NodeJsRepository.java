@@ -11,6 +11,7 @@ import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,6 +81,25 @@ public class NodeJsRepository {
         });
 
         return allMatch;
+    }
+
+
+    // récuperation match par id
+    public MutableLiveData<RetourMatch> getMatchById(String id){
+        MutableLiveData<RetourMatch> matchMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.getMatchById(id).enqueue(new Callback<RetourMatch>() {
+            @Override
+            public void onResponse(Call<RetourMatch> call, Response<RetourMatch> response) {
+                matchMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RetourMatch> call, Throwable t) {
+                matchMutableLiveData.setValue(null);
+            }
+        });
+
+        return matchMutableLiveData;
     }
 
     // creation de pari

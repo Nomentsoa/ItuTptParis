@@ -23,21 +23,179 @@
             android:layout_margin="@dimen/main_margin"
             app:cardCornerRadius="@dimen/corner_radius_main"
             >
+
             <TextView
                 android:id="@+id/txtBarcodeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:text="No Barcode Detected"
+                android:text="sdfq"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_no_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/veuillez_scanner_un_qrcode"
+                android:textSize="@dimen/txt_pari_dialog"
                 android:textColor="@color/colorNoirx"
-                android:textSize="20sp"
-                />
+                android:layout_gravity="center"
+                android:visibility="visible"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_match"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/tv_date_heure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12/02/2021 à 18:00"
+                    android:textColor="@color/colorNoirx"
+                    android:textSize="9sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="@dimen/main_margin"
+                    android:layout_marginTop="@dimen/main_margin"/>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="@dimen/main_margin"
+                    android:src="@drawable/icon_foot_match"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_heure" />
+
+                <TextView
+                    android:id="@+id/tv_nom_equipe1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Equipe1"
+                    android:textColor="@color/colorNoirx"
+                    android:textSize="@dimen/size_text_equipe"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_heure"
+                    android:layout_marginLeft="@dimen/main_margin"/>
+
+                <TextView
+                    android:id="@+id/tv_vs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VS"
+                    android:textColor="@color/colorNoirx"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_nom_equipe1"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_heure"
+                    android:layout_marginLeft="@dimen/main_margin"/>
+
+                <TextView
+                    android:id="@+id/tv_nom_equipe2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Equipe2"
+                    android:textColor="@color/colorNoirx"
+                    android:textSize="@dimen/size_text_equipe"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_vs"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_heure"
+                    android:layout_marginLeft="@dimen/main_margin"/>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_heure">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_btn_label_equipe1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Equipe 1"
+                            android:textColor="@color/colorNoirx"
+                            android:textSize="@dimen/size_text_titre_button" />
+
+                        <Button
+                            android:id="@+id/btn_equipe1"
+                            android:layout_width="@dimen/width_heigth_button_match_list"
+                            android:layout_height="@dimen/width_heigth_button_match_list"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_text_quote_button" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_btn_label_equipe2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Equipe 2"
+                            android:textColor="@color/colorNoirx"
+                            android:textSize="@dimen/size_text_titre_button" />
+
+                        <Button
+                            android:id="@+id/btn_equipe2"
+                            android:layout_width="@dimen/width_heigth_button_match_list"
+                            android:layout_height="@dimen/width_heigth_button_match_list"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_text_quote_button" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Null"
+                            android:textColor="@color/colorNoirx"
+                            android:textSize="@dimen/size_text_titre_button" />
+
+                        <Button
+                            android:id="@+id/btn_null"
+                            android:layout_width="@dimen/width_heigth_button_match_list"
+                            android:layout_height="@dimen/width_heigth_button_match_list"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_text_quote_button" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
+
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_cam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/main_margin"

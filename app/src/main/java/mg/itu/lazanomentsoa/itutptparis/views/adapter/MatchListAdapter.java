@@ -8,26 +8,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
+import mg.itu.lazanomentsoa.itutptparis.utils.StringConstant;
 import mg.itu.lazanomentsoa.itutptparis.views.fragments.AccueilFragment;
-import mg.itu.lazanomentsoa.itutptparis.views.fragments.PariDialogFragment;
 
 public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.ViewHolder> {
     private List<Match> matches;
     private Context context;
-    SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+
     private String idUserConnected;
 
     public MatchListAdapter(List<Match> matches, Context context) {
@@ -54,7 +51,7 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
         holder.tvBtnLabelEquipe1.setText(match.getEquipe1().getNom());
         holder.tvBtnLabelEquipe2.setText(match.getEquipe2().getNom());
 
-        String date = fromUser.format(match.getDate());
+        String date = StringConstant.dateFormat.format(match.getDate());
         holder.tvDateHeure.setText(date + " à " + match.getHeure());
 
         holder.btnEquipe1.setOnClickListener(new View.OnClickListener() {

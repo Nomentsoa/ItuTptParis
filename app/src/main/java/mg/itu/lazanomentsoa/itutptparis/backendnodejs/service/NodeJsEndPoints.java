@@ -7,11 +7,13 @@ import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface NodeJsEndPoints {
     //authentification loginRequestbody(login, password)
@@ -22,6 +24,9 @@ public interface NodeJsEndPoints {
     @GET("match")
     Call<List<Match>> getAllMatchAVenir();
 
+    @GET("match/{id}")
+    Call<RetourMatch> getMatchById(@Path("id") String id);
+
     //create pari
     @POST("pari")
     Call<BaseRetour> createPari(@Body Pari pari);
@@ -29,4 +34,5 @@ public interface NodeJsEndPoints {
     // localisation agence
     @GET("localisationAgence")
     Call<List<LocalisationAgence>> getAllLocalisationAgence();
+
 }

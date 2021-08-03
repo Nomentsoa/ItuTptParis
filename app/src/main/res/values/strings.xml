@@ -34,4 +34,6 @@
     //scanne qrcode
     <string name="scanne_qr_code">Scanne QrCode</string>
     <string name="scanne_qr_code_arreter">Scanne QrCode arreté</string>
+    <string name="no_match">Pas de match disponible.</string>
+    <string name="veuillez_scanner_un_qrcode">Vueillez scanner votre CRCode</string>
 </resources>
