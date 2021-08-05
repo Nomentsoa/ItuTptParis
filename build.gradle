@@ -7,6 +7,7 @@ buildscript {
         butterKnife = "10.2.3"
         map = "17.0.1"
         vision = "20.1.3"
+        room = "2.2.5"
     }
 
     repositories {

@@ -13,10 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.w3c.dom.Text;
-
 import mg.itu.lazanomentsoa.itutptparis.R;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
+import mg.itu.lazanomentsoa.itutptparis.sqlite.model.Profil;
+import mg.itu.lazanomentsoa.itutptparis.sqlite.viewmodel.ProfilSQLiteViewModel;
 import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.LoginViewModel;
 
@@ -29,10 +29,13 @@ public class LoginActivity extends AbstractBaseActivity {
     private TextView tvErreur;
     private LifecycleOwner myOwner;
 
+    private ProfilSQLiteViewModel profilViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        profilViewModel = new ViewModelProvider(this).get(ProfilSQLiteViewModel.class);
 
         cvChamps = (CardView)findViewById(R.id.cv_champ);
         cvFond = (CardView)findViewById(R.id.cv_fond);
@@ -57,6 +60,18 @@ public class LoginActivity extends AbstractBaseActivity {
                             tvErreur.setVisibility(View.VISIBLE);
                             tvErreur.setText(utilisateur.getMessage());
                         }else{
+                            Profil profilConnected = new Profil();
+                            profilConnected.setLogin(utilisateur.getLogin());
+                            profilConnected.setPassword(utilisateur.getPassword());
+                            profilConnected.setNom(utilisateur.getNom());
+                            profilConnected.setPrenom(utilisateur.getPrenom());
+                            profilConnected.setEtat(utilisateur.getEtat());
+                            profilConnected.setEmail(utilisateur.getEmail());
+                            profilConnected.setNumeroTelephone(utilisateur.getNumeroTelephone());
+                            profilConnected.setIdUser(utilisateur.get_id());
+
+                            profilViewModel.insert(profilConnected);
+
                             SessionManager.getInstance(getBaseContext()).saveNomConnectedUser(utilisateur.getNom());
                             SessionManager.getInstance(getBaseContext()).savePrenomConnectedUser(utilisateur.getPrenom());
                             SessionManager.getInstance(getBaseContext()).saveEmailConnectedUser(utilisateur.getEmail());

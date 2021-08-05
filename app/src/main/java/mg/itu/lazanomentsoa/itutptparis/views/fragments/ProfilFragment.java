@@ -4,38 +4,71 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentProfilBinding;
-import mg.itu.lazanomentsoa.itutptparis.views.fragments.profil.ProfilViewModel;
+import mg.itu.lazanomentsoa.itutptparis.sqlite.model.Profil;
+import mg.itu.lazanomentsoa.itutptparis.sqlite.viewmodel.ProfilSQLiteViewModel;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 
 
 public class ProfilFragment extends Fragment {
-
-    private ProfilViewModel profilViewModel;
+    private final String TAG = ProfilFragment.class.getName();
     private FragmentProfilBinding binding;
-
+    private ProfilSQLiteViewModel profilSQLiteViewModel;
+    private LifecycleOwner lifecycleOwner;
+    private Profil profilToUpdate;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        profilViewModel =
-                new ViewModelProvider(this).get(ProfilViewModel.class);
+
+        profilSQLiteViewModel = new ViewModelProvider(this).get(ProfilSQLiteViewModel.class);
+        lifecycleOwner = this;
+
+//        profilSQLiteViewModel.getAllProfil().observe(lifecycleOwner, profils -> {
+//            Log.i(TAG, "profils => "+ profils);
+//        });
+
+
 
         binding = FragmentProfilBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        profilSQLiteViewModel.getProfilByIdUser(SessionManager.getInstance(getContext()).getIdConnectedUser()).observe(lifecycleOwner, profil -> {
+            binding.etNom.setText(profil.getNom());
+            binding.etPrenom.setText(profil.getPrenom());
+            binding.etEmail.setText(profil.getEmail());
+            binding.etTelephone.setText(profil.getNumeroTelephone());
 
-        final TextView textView = binding.textGallery;
-        profilViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            profilToUpdate = profil;
+        });
+
+
+        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v) {
+                profilToUpdate.setNom(binding.etNom.getText().toString());
+                profilToUpdate.setEmail(binding.etEmail.getText().toString());
+                profilToUpdate.setPrenom(binding.etPrenom.getText().toString());
+                profilToUpdate.setNumeroTelephone(binding.etTelephone.getText().toString());
+
+                SessionManager.getInstance(getContext()).saveNomConnectedUser(profilToUpdate.getNom());
+                SessionManager.getInstance(getContext()).savePrenomConnectedUser(profilToUpdate.getPrenom());
+                SessionManager.getInstance(getContext()).saveEmailConnectedUser(profilToUpdate.getEmail());
+
+                profilSQLiteViewModel.update(profilToUpdate);
+
+                Toast.makeText(getContext(), "Profil local modifié", Toast.LENGTH_LONG).show();
+                getActivity().finish();
+                getActivity().startActivity(getActivity().getIntent());
             }
         });
+
+        View root = binding.getRoot();
+
+
         return root;
     }
 

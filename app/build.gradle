@@ -111,6 +111,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$rootProject.lifecycle"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$rootProject.lifecycle"
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
@@ -127,4 +128,11 @@ dependencies {
 
     // Vision API Google
     implementation "com.google.android.gms:play-services-vision:$rootProject.vision"
+
+    //room
+    implementation "androidx.room:room-runtime:$rootProject.room"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.room"
+    implementation "androidx.room:room-rxjava2:$rootProject.room"
+    implementation "androidx.room:room-guava:$rootProject.room"
+    testImplementation "androidx.room:room-testing:$rootProject.room"
 }
