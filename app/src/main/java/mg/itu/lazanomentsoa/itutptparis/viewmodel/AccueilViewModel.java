@@ -12,7 +12,9 @@ import java.util.List;
 
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.MouvementJoueur;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Solde;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.service.NodeJsRepository;
 
 public class AccueilViewModel extends AndroidViewModel {
@@ -34,5 +36,13 @@ public class AccueilViewModel extends AndroidViewModel {
 
     public MutableLiveData<BaseRetour> createPari(Pari pari){
         return nodeJsRepository.createPari(pari);
+    }
+
+    public MutableLiveData<Solde> getSoldeByIdUserConnected(String idUser){
+        return nodeJsRepository.getSoldeByIdUserConnected(idUser);
+    }
+
+    public MutableLiveData<BaseRetour> createMouvementJoueur(MouvementJoueur mouvementJoueur){
+        return nodeJsRepository.createMouvementJoueur(mouvementJoueur);
     }
 }

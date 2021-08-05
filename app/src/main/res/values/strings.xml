@@ -36,4 +36,7 @@
     <string name="scanne_qr_code_arreter">Scanne QrCode arreté</string>
     <string name="no_match">Pas de match disponible.</string>
     <string name="veuillez_scanner_un_qrcode">Vueillez scanner votre CRCode</string>
+    <string name="solde_insuffisant">Votre solde est insuffisant !</string>
+    <string name="pari_cree">Pari créé !</string>
+    <string name="error_mouvement_creation">Mouvement du joueur n\'est pas enregistré !</string>
 </resources>

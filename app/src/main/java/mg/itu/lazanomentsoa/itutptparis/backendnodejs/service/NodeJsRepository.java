@@ -10,8 +10,10 @@ import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.BaseRetour;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LocalisationAgence;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.MouvementJoueur;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Solde;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -136,6 +138,41 @@ public class NodeJsRepository {
             }
         });
         return listMutableLiveData;
+    }
+
+    // get solde utilisateur by idUser
+    public MutableLiveData<Solde> getSoldeByIdUserConnected(String idUser){
+        MutableLiveData<Solde> soldeMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.getSoldeConnectedUser(idUser).enqueue(new Callback<Solde>() {
+            @Override
+            public void onResponse(Call<Solde> call, Response<Solde> response) {
+                soldeMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Solde> call, Throwable t) {
+                soldeMutableLiveData.setValue(null);
+            }
+        });
+
+        return soldeMutableLiveData;
+    }
+
+    // create mouvement jour
+    public MutableLiveData<BaseRetour> createMouvementJoueur(MouvementJoueur mouvementJoueur){
+        MutableLiveData<BaseRetour> baseRetourMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.createMouvementJoueur(mouvementJoueur).enqueue(new Callback<BaseRetour>() {
+            @Override
+            public void onResponse(Call<BaseRetour> call, Response<BaseRetour> response) {
+                baseRetourMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<BaseRetour> call, Throwable t) {
+                baseRetourMutableLiveData.setValue(null);
+            }
+        });
+        return baseRetourMutableLiveData;
     }
 
 }

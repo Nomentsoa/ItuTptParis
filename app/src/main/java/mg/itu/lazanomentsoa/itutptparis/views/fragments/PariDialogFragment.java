@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,9 +21,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Calendar;
+
 import mg.itu.lazanomentsoa.itutptparis.R;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.MouvementJoueur;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.utils.LoadingDialogFragment;
+import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.utils.StringConstant;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.AccueilViewModel;
 
@@ -90,19 +95,49 @@ public class PariDialogFragment<T> extends DialogFragment {
                 }else{
                     showLoading(false);
                     selectedPari.setMise(Integer.parseInt(etSomme.getText().toString()));
-                    accueilViewModel.createPari(selectedPari).observe(lifecycleOwner, baseRetour -> {
-                        Log.i(TAG," pari response => " + baseRetour);
-                        if(baseRetour == null){
+                    accueilViewModel.getSoldeByIdUserConnected(SessionManager.getInstance(getContext()).getIdConnectedUser()).observe(lifecycleOwner, solde -> {
+                        if(solde != null){
+                            Log.i(TAG, "solde => " +solde.getSolde());
+                            int sommeAMiser = Integer.parseInt(etSomme.getText().toString());
+                            if(sommeAMiser > solde.getSolde()){
+                                dismissLoading();
+                                tvErreurSomme.setVisibility(View.VISIBLE);
+                                tvErreurSomme.setText(getResources().getString(R.string.solde_insuffisant));
+                            }else{
+                                accueilViewModel.createPari(selectedPari).observe(lifecycleOwner, baseRetour -> {
+                                    Log.i(TAG," pari response => " + baseRetour);
+                                    if(baseRetour == null){
+                                        dismissLoading();
+                                        tvErreurSomme.setVisibility(View.VISIBLE);
+                                        tvErreurSomme.setText(getResources().getString(R.string.erreur_mise_pari));
+                                    }else{
+                                        String dateMouvement = StringConstant.dateFormatToSend.format(Calendar.getInstance().getTime());
+                                        MouvementJoueur mouvementJoueur = new MouvementJoueur(dateMouvement, SessionManager.getInstance(getContext()).getIdConnectedUser(), baseRetour.getMessage(), sommeAMiser);
+                                        accueilViewModel.createMouvementJoueur(mouvementJoueur).observe(lifecycleOwner, baseretourCreateMouvement ->{
+                                            if(baseretourCreateMouvement != null){
+                                                dismiss();
+                                                dismissLoading();
+                                                Toast.makeText(getContext(), getResources().getText(R.string.pari_cree), Toast.LENGTH_LONG).show();
+                                            }else{
+                                                dismiss();
+                                                dismissLoading();
+                                                Toast.makeText(getContext(), getResources().getText(R.string.error_mouvement_creation), Toast.LENGTH_LONG).show();
+                                            }
+
+                                        });
+
+                                    }
+
+                                });
+                            }
+                        }else{
                             dismissLoading();
                             tvErreurSomme.setVisibility(View.VISIBLE);
                             tvErreurSomme.setText(getResources().getString(R.string.erreur_mise_pari));
-                        }else{
-                            dismiss();
-                            dismissLoading();
                         }
 
-
                     });
+
                 }
 
             }

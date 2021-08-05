@@ -8,4 +8,5 @@ public class StringConstant {
         return "t" + (new Date().getTime());
     }
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat dateFormatToSend = new SimpleDateFormat("yyyy-MM-dd");
 }
