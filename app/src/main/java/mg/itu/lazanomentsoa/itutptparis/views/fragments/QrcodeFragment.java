@@ -11,7 +11,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +43,8 @@ public class QrcodeFragment extends AbstractBaseFragment {
     private FragmentQrcodeBinding binding;
     private QRCodeViewModel qrCodeViewModel;
     private SurfaceView surfaceView;
-    private TextView txtBarcodeValue, tvNoMatch, tvDateHeure, tvNomEquipe1, tvNomEquipe2,tvLabelEquipe1, tvLabelEquipe2;
-    private Button btnCoteEquipe1, btnCoteEquipe2, btnCoteNull;
+    private TextView txtBarcodeValue, tvNoMatch, tvDateHeure, tvNomEquipe1, tvNomEquipe2,tvLabelEquipe1, tvLabelEquipe2, tvCoteEquipe1, tvCoteEquipe2, tvCoteNull;
+    private ConstraintLayout clBtnEquipe1, clBtnEquipe2, clBtnNull;
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
@@ -100,9 +99,9 @@ public class QrcodeFragment extends AbstractBaseFragment {
                                 tvNomEquipe2.setText(retourMatch.getMatch().getEquipe2().getNom());
                                 tvLabelEquipe1.setText(retourMatch.getMatch().getEquipe1().getNom());
                                 tvLabelEquipe2.setText(retourMatch.getMatch().getEquipe2().getNom());
-                                btnCoteEquipe1.setText(retourMatch.getMatch().getCoteEquipe1()+"");
-                                btnCoteEquipe2.setText(retourMatch.getMatch().getCoteEquip2()+"");
-                                btnCoteNull.setText(retourMatch.getMatch().getCoteMatchNull()+"");
+                                tvCoteEquipe1.setText(retourMatch.getMatch().getCoteEquipe1()+"");
+                                tvCoteEquipe2.setText(retourMatch.getMatch().getCoteEquip2()+"");
+                                tvCoteNull.setText(retourMatch.getMatch().getCoteMatchNull()+"");
 
                                listenerButtonMatch(retourMatch.getMatch());
                             }
@@ -137,16 +136,19 @@ public class QrcodeFragment extends AbstractBaseFragment {
         tvNomEquipe2 = view.findViewById(R.id.tv_nom_equipe2);
         tvLabelEquipe1 = view.findViewById(R.id.tv_btn_label_equipe1);
         tvLabelEquipe2 = view.findViewById(R.id.tv_btn_label_equipe2);
-        btnCoteEquipe1 = view.findViewById(R.id.btn_equipe1);
-        btnCoteEquipe2 = view.findViewById(R.id.btn_equipe2);
-        btnCoteNull = view.findViewById(R.id.btn_null);
+        tvCoteEquipe1 = view.findViewById(R.id.tv_cote_equipe1);
+        tvCoteEquipe2 = view.findViewById(R.id.tv_cote_equipe2);
+        tvCoteNull = view.findViewById(R.id.tv_cote_null);
+        clBtnEquipe1 = view.findViewById(R.id.cl_btn_equipe1);
+        clBtnEquipe2 = view.findViewById(R.id.cl_btn_equipe1);
+        clBtnNull = view.findViewById(R.id.cl_btn_null);
 
 
 
     }
 
     private void listenerButtonMatch(Match match){
-        btnCoteEquipe1.setOnClickListener(new View.OnClickListener() {
+        clBtnEquipe1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), match.getEquipe1(), SessionManager.getInstance(getContext()).getIdConnectedUser());
@@ -154,7 +156,7 @@ public class QrcodeFragment extends AbstractBaseFragment {
             }
         });
 
-        btnCoteEquipe2.setOnClickListener(new View.OnClickListener() {
+        clBtnEquipe2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), match.getEquipe2(), SessionManager.getInstance(getContext()).getIdConnectedUser());
@@ -162,7 +164,7 @@ public class QrcodeFragment extends AbstractBaseFragment {
             }
         });
 
-        btnCoteNull.setOnClickListener(new View.OnClickListener() {
+        clBtnNull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), null, SessionManager.getInstance(getContext()).getIdConnectedUser());

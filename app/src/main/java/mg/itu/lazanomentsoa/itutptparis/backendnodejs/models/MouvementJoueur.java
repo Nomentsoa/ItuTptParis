@@ -18,18 +18,19 @@ public class MouvementJoueur {
 
     @SerializedName("montantDebit")
     @Expose
-    private int montantDebit;
+    private Double montantDebit;
 
     @SerializedName("montantCredit")
     @Expose
-    private int montantCredit;
+    private Double montantCredit;
 
 
-    public MouvementJoueur(String date, String idUser, String idPari, int montantDebit) {
+    public MouvementJoueur(String date, String idUser, String idPari, Double montantDebit, Double montantCredit) {
         this.date = date;
         this.idUser = idUser;
         this.idPari = idPari;
         this.montantDebit = montantDebit;
+        this.montantCredit = montantCredit;
     }
 
     public String getDate() {
@@ -56,19 +57,20 @@ public class MouvementJoueur {
         this.idPari = idPari;
     }
 
-    public int getMontantDebit() {
+
+    public Double getMontantDebit() {
         return montantDebit;
     }
 
-    public void setMontantDebit(int montantDebit) {
+    public void setMontantDebit(Double montantDebit) {
         this.montantDebit = montantDebit;
     }
 
-    public int getMontantCredit() {
+    public Double getMontantCredit() {
         return montantCredit;
     }
 
-    public void setMontantCredit(int montantCredit) {
+    public void setMontantCredit(Double montantCredit) {
         this.montantCredit = montantCredit;
     }
 

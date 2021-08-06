@@ -24,7 +24,7 @@
     // dimession item match liste
     <dimen name="size_text_equipe">11sp</dimen>∂
     <dimen name="size_text_titre_button">7sp</dimen>
-    <dimen name="size_text_quote_button">12sp</dimen>
+    <dimen name="size_text_quote_button">11sp</dimen>
     <dimen name="width_heigth_button_match_list">40dp</dimen>
 
     // dimension dialog pari

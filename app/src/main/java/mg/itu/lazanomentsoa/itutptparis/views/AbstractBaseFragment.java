@@ -35,7 +35,7 @@ public class AbstractBaseFragment extends Fragment {
         loadingDialogFragment.dismiss();
     }
 
-    public static void showPariDialog(Pari pari, int cote){
+    public static void showPariDialog(Pari pari, float cote){
         PariDialogFragment pariDialogFragment = new PariDialogFragment(pari, cote);
         pariDialogFragment.show(((FragmentActivity)myContext).getSupportFragmentManager(), "transaction");
 

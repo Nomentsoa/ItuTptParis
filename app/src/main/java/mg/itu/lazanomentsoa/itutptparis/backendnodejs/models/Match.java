@@ -23,11 +23,11 @@ public class Match {
 
     @SerializedName("coteequipe1")
     @Expose
-    private int coteEquipe1;
+    private float coteEquipe1;
 
     @SerializedName("coteequipe2")
     @Expose
-    private int coteEquip2;
+    private float coteEquip2;
 
     @SerializedName("etat")
     @Expose
@@ -47,9 +47,7 @@ public class Match {
 
     @SerializedName("coteMatchNull")
     @Expose
-    private int coteMatchNull;
-
-
+    private float coteMatchNull;
 
 
     public String getId() {
@@ -59,7 +57,6 @@ public class Match {
     public void setId(String id) {
         this.id = id;
     }
-
 
     public Date getDate() {
         return date;
@@ -77,19 +74,19 @@ public class Match {
         this.heure = heure;
     }
 
-    public int getCoteEquipe1() {
+    public float getCoteEquipe1() {
         return coteEquipe1;
     }
 
-    public void setCoteEquipe1(int coteEquipe1) {
+    public void setCoteEquipe1(float coteEquipe1) {
         this.coteEquipe1 = coteEquipe1;
     }
 
-    public int getCoteEquip2() {
+    public float getCoteEquip2() {
         return coteEquip2;
     }
 
-    public void setCoteEquip2(int coteEquip2) {
+    public void setCoteEquip2(float coteEquip2) {
         this.coteEquip2 = coteEquip2;
     }
 
@@ -125,11 +122,27 @@ public class Match {
         this.equipe2 = equipe2;
     }
 
-    public int getCoteMatchNull() {
+    public float getCoteMatchNull() {
         return coteMatchNull;
     }
 
-    public void setCoteMatchNull(int coteMatchNull) {
+    public void setCoteMatchNull(float coteMatchNull) {
         this.coteMatchNull = coteMatchNull;
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", heure='" + heure + '\'' +
+                ", coteEquipe1=" + coteEquipe1 +
+                ", coteEquip2=" + coteEquip2 +
+                ", etat='" + etat + '\'' +
+                ", categorie=" + categorie +
+                ", equipe1=" + equipe1 +
+                ", equipe2=" + equipe2 +
+                ", coteMatchNull=" + coteMatchNull +
+                '}';
     }
 }

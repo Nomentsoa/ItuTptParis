@@ -20,9 +20,9 @@ public class Pari {
 
     @SerializedName("mise")
     @Expose
-    private int mise;
+    private Double mise;
 
-    public Pari(String idMatch, Equipe equipe, String idUser, int mise) {
+    public Pari(String idMatch, Equipe equipe, String idUser, Double mise) {
         this.idMatch = idMatch;
         this.equipe = equipe;
         this.idUser = idUser;
@@ -59,11 +59,11 @@ public class Pari {
         this.idUser = idUser;
     }
 
-    public int getMise() {
+    public Double getMise() {
         return mise;
     }
 
-    public void setMise(int mise) {
+    public void setMise(Double mise) {
         this.mise = mise;
     }
 

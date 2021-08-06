@@ -70,7 +70,9 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date_heure">
+        app:layout_constraintTop_toBottomOf="@+id/tv_date_heure"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -86,14 +88,29 @@
                 android:text="Equipe 1"
                 android:textColor="@color/colorNoirx"
                 android:textSize="@dimen/size_text_titre_button" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_btn_equipe1"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/custom_layout_button"
+                android:elevation="2dp"
+                android:layout_marginTop="5dp">
 
-            <Button
-                android:id="@+id/btn_equipe1"
-                android:layout_width="@dimen/width_heigth_button_match_list"
-                android:layout_height="@dimen/width_heigth_button_match_list"
-                android:text="3"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_text_quote_button" />
+                <TextView
+                    android:id="@+id/tv_cote_equipe1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_text_quote_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="34.98"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -111,13 +128,28 @@
                 android:textColor="@color/colorNoirx"
                 android:textSize="@dimen/size_text_titre_button" />
 
-            <Button
-                android:id="@+id/btn_equipe2"
-                android:layout_width="@dimen/width_heigth_button_match_list"
-                android:layout_height="@dimen/width_heigth_button_match_list"
-                android:text="3"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_text_quote_button" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_btn_equipe2"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/custom_layout_button"
+                android:elevation="2dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_cote_equipe2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_text_quote_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="34.98"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -134,13 +166,28 @@
                 android:textColor="@color/colorNoirx"
                 android:textSize="@dimen/size_text_titre_button" />
 
-            <Button
-                android:id="@+id/btn_null"
-                android:layout_width="@dimen/width_heigth_button_match_list"
-                android:layout_height="@dimen/width_heigth_button_match_list"
-                android:text="3"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_text_quote_button" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_btn_null"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/custom_layout_button"
+                android:elevation="2dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_cote_null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_text_quote_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="34.98"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </LinearLayout>

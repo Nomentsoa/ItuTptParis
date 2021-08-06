@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
 public class Solde {
     @SerializedName("solde")
     @Expose
-    private int solde;
+    private Double solde;
 
-    public int getSolde() {
+    public Double getSolde() {
         return solde;
     }
 
-    public void setSolde(int solde) {
+    public void setSolde(Double solde) {
         this.solde = solde;
     }
 }

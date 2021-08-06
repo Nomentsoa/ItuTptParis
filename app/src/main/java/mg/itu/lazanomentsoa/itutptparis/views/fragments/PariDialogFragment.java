@@ -38,14 +38,14 @@ public class PariDialogFragment<T> extends DialogFragment {
     private EditText etSomme;
     private Button btnValider;
     private Pari selectedPari;
-    private int cote;
+    private float cote;
     private AccueilViewModel accueilViewModel;
     private LifecycleOwner lifecycleOwner;
 
     protected LoadingDialogFragment loadingDialogFragment;
     protected FragmentManager fragmentManager;
 
-    public PariDialogFragment(Pari pari, int cote){
+    public PariDialogFragment(Pari pari, float cote){
         selectedPari = pari;
         this.cote = cote;
     }
@@ -94,11 +94,11 @@ public class PariDialogFragment<T> extends DialogFragment {
                     tvErreurSomme.setText(getResources().getString(R.string.mise_obligatoire));
                 }else{
                     showLoading(false);
-                    selectedPari.setMise(Integer.parseInt(etSomme.getText().toString()));
+                    selectedPari.setMise(Double.parseDouble(etSomme.getText().toString()));
                     accueilViewModel.getSoldeByIdUserConnected(SessionManager.getInstance(getContext()).getIdConnectedUser()).observe(lifecycleOwner, solde -> {
                         if(solde != null){
                             Log.i(TAG, "solde => " +solde.getSolde());
-                            int sommeAMiser = Integer.parseInt(etSomme.getText().toString());
+                            Double sommeAMiser = Double.parseDouble(etSomme.getText().toString());
                             if(sommeAMiser > solde.getSolde()){
                                 dismissLoading();
                                 tvErreurSomme.setVisibility(View.VISIBLE);
@@ -112,7 +112,7 @@ public class PariDialogFragment<T> extends DialogFragment {
                                         tvErreurSomme.setText(getResources().getString(R.string.erreur_mise_pari));
                                     }else{
                                         String dateMouvement = StringConstant.dateFormatToSend.format(Calendar.getInstance().getTime());
-                                        MouvementJoueur mouvementJoueur = new MouvementJoueur(dateMouvement, SessionManager.getInstance(getContext()).getIdConnectedUser(), baseRetour.getMessage(), sommeAMiser);
+                                        MouvementJoueur mouvementJoueur = new MouvementJoueur(dateMouvement, SessionManager.getInstance(getContext()).getIdConnectedUser(), baseRetour.getMessage(), sommeAMiser, 0.0);
                                         accueilViewModel.createMouvementJoueur(mouvementJoueur).observe(lifecycleOwner, baseretourCreateMouvement ->{
                                             if(baseretourCreateMouvement != null){
                                                 dismiss();

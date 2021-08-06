@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -45,16 +45,16 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
         Match match = matches.get(position);
         holder.tvEquipe1.setText(match.getEquipe1().getNom());
         holder.tvEquipe2.setText(match.getEquipe2().getNom());
-        holder.btnEquipe1.setText(match.getCoteEquipe1()+"");
-        holder.btnEquipe2.setText(match.getCoteEquip2()+"");
-        holder.btnNull.setText(match.getCoteMatchNull()+"");
+        holder.tvCoteEquipe1.setText(match.getCoteEquipe1()+"");
+        holder.tvCoteEquipe2.setText(match.getCoteEquip2()+"");
+        holder.tvCoteNull.setText(match.getCoteMatchNull()+"");
         holder.tvBtnLabelEquipe1.setText(match.getEquipe1().getNom());
         holder.tvBtnLabelEquipe2.setText(match.getEquipe2().getNom());
 
         String date = StringConstant.dateFormat.format(match.getDate());
         holder.tvDateHeure.setText(date + " à " + match.getHeure());
 
-        holder.btnEquipe1.setOnClickListener(new View.OnClickListener() {
+        holder.clBtnEquipe1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), match.getEquipe1(), idUserConnected);
@@ -62,7 +62,7 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
             }
         });
 
-        holder.btnEquipe2.setOnClickListener(new View.OnClickListener() {
+        holder.clBtnEquipe2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), match.getEquipe2(), idUserConnected);
@@ -70,7 +70,7 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
             }
         });
 
-        holder.btnNull.setOnClickListener(new View.OnClickListener() {
+        holder.clBtnNull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pari pari = new Pari(match.getId(), null, idUserConnected);
@@ -85,8 +85,9 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvEquipe1, tvEquipe2, tvBtnLabelEquipe1, tvBtnLabelEquipe2, tvDateHeure;
-        Button btnEquipe1, btnEquipe2, btnNull;
+        TextView tvEquipe1, tvEquipe2, tvBtnLabelEquipe1, tvBtnLabelEquipe2, tvDateHeure, tvCoteEquipe1, tvCoteEquipe2, tvCoteNull;
+
+        ConstraintLayout clBtnEquipe1, clBtnEquipe2, clBtnNull;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvDateHeure = (TextView)itemView.findViewById(R.id.tv_date_heure);
@@ -94,9 +95,12 @@ public class  MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Vie
             tvEquipe2 = (TextView)itemView.findViewById(R.id.tv_nom_equipe2);
             tvBtnLabelEquipe1 = (TextView)itemView.findViewById(R.id.tv_btn_label_equipe1);
             tvBtnLabelEquipe2 = (TextView)itemView.findViewById(R.id.tv_btn_label_equipe2);
-            btnEquipe1 = (Button)itemView.findViewById(R.id.btn_equipe1);
-            btnEquipe2 = (Button)itemView.findViewById(R.id.btn_equipe2);
-            btnNull = (Button)itemView.findViewById(R.id.btn_null);
+            tvCoteEquipe1 = (TextView)itemView.findViewById(R.id.tv_cote_equipe1);
+            tvCoteEquipe2 = (TextView)itemView.findViewById(R.id.tv_cote_equipe2);
+            tvCoteNull = (TextView)itemView.findViewById(R.id.tv_cote_null);
+            clBtnEquipe1 = (ConstraintLayout) itemView.findViewById(R.id.cl_btn_equipe1);
+            clBtnEquipe2 = (ConstraintLayout) itemView.findViewById(R.id.cl_btn_equipe2);
+            clBtnNull = (ConstraintLayout) itemView.findViewById(R.id.cl_btn_null);
         }
     }
 
