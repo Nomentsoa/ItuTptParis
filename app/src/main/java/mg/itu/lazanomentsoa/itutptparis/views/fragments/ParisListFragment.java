@@ -54,7 +54,7 @@ public class ParisListFragment extends AbstractBaseFragment {
     private void getListAllParis(){
         showLoading(false);
         pariViewModel.getAllParisByIdUser(SessionManager.getInstance(getContext()).getIdConnectedUser()).observe(lifecycleOwner, paris -> {
-            if(paris == null){
+            if(paris == null || paris.size() == 0){
                 binding.tvParisNull.setVisibility(View.VISIBLE);
                 binding.llPariNonNull.setVisibility(View.GONE);
             }else{
