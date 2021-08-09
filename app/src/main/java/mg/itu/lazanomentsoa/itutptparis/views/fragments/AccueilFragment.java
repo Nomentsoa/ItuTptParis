@@ -68,7 +68,7 @@ public class AccueilFragment extends AbstractBaseFragment {
                 if(txtRecherche.length() != 0){
                     List<Match> matchListRecherche = new ArrayList<>();
                     for (Match match : matchList ) {
-                        if(match.getEquipe1().getNom().toLowerCase().contains(txtRecherche.toLowerCase()) || match.getEquipe2().getNom().toLowerCase().contains(txtRecherche.toLowerCase())){
+                        if(match.getEquipe1().getNom().toLowerCase().contains(txtRecherche.toLowerCase()) || match.getEquipe2().getNom().toLowerCase().contains(txtRecherche.toLowerCase()) || match.getCategorie().getNom().toLowerCase().contains(txtRecherche.toLowerCase())){
                             matchListRecherche.add(match);
                         }
                     }
