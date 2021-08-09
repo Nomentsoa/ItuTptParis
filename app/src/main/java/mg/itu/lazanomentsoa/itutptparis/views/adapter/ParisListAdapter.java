@@ -81,4 +81,9 @@ public class ParisListAdapter extends RecyclerView.Adapter<ParisListAdapter.View
             tvCote = itemView.findViewById(R.id.tv_cote);
         }
     }
+
+    public void setNewParisRecherche(List<Pari> newParisRecherche){
+        this.paris = newParisRecherche;
+        notifyDataSetChanged();
+    }
 }

@@ -11,6 +11,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
 import mg.itu.lazanomentsoa.itutptparis.databinding.FragmentParisListBinding;
 import mg.itu.lazanomentsoa.itutptparis.utils.SessionManager;
 import mg.itu.lazanomentsoa.itutptparis.viewmodel.PariViewModel;
@@ -24,6 +28,7 @@ public class ParisListFragment extends AbstractBaseFragment {
     private FragmentParisListBinding binding;
     private LifecycleOwner lifecycleOwner;
     private ParisListAdapter parisListAdapter;
+    private List<Pari> pariList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,7 @@ public class ParisListFragment extends AbstractBaseFragment {
         lifecycleOwner = this;
         pariViewModel = new ViewModelProvider((ViewModelStoreOwner) lifecycleOwner).get(PariViewModel.class);
         getListAllParis();
+        btnRechercheAction();
 
         return root;
     }
@@ -60,10 +66,35 @@ public class ParisListFragment extends AbstractBaseFragment {
                 binding.rvParis.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.rvParis.setAdapter(parisListAdapter);
 
+                pariList = paris;
+
             }
 
             Log.i(TAG, "list paris => " + paris);
             dismissLoading();
+        });
+    }
+
+    private void btnRechercheAction(){
+        binding.llBtnRecherche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txtRecherche = binding.etRecherche.getText().toString();
+                if(txtRecherche.length() != 0){
+                    List<Pari> parisListRecherche = new ArrayList<>();
+                    for(Pari pari : pariList){
+                        if(pari.getEquipe() != null){
+                            if(pari.getEquipe().getNom().toLowerCase().contains(txtRecherche.toLowerCase())){
+                                parisListRecherche.add(pari);
+                            }
+                        }
+                    }
+                    parisListAdapter.setNewParisRecherche(parisListRecherche);
+
+                }else{
+                    parisListAdapter.setNewParisRecherche(pariList);
+                }
+            }
         });
     }
 }
