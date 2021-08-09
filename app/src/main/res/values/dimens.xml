@@ -11,7 +11,7 @@
     <dimen name="corner_radius">10dp</dimen>
     <dimen name="corner_radius_main">5dp</dimen>
     <dimen name="width_login_cardview">250dp</dimen>
-    <dimen name="heigth_login_cardview">250dp</dimen>
+    <dimen name="heigth_login_cardview">300dp</dimen>
     <dimen name="main_paddin">10dp</dimen>
     <dimen name="main_margin">10dp</dimen>
     <dimen name="login_text_size">18sp</dimen>

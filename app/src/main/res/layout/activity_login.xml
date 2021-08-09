@@ -25,7 +25,7 @@
         android:alpha="0.7"
         app:cardCornerRadius="@dimen/corner_radius"
         app:cardElevation="@dimen/card_view_elevation"
-        android:visibility="gone"
+        android:visibility="visible"
         />
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_champ"
@@ -35,7 +35,7 @@
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="@dimen/card_view_elevation"
         app:cardCornerRadius="@dimen/corner_radius"
-        android:visibility="gone"
+        android:visibility="visible"
         >
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -96,6 +96,17 @@
                android:textSize="@dimen/login_text_size"
                android:textAllCaps="false"
                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btn_inscription"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/inscription"
+                android:backgroundTint="@color/theme_2"
+                android:alpha="1"
+                android:textSize="@dimen/login_text_size"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

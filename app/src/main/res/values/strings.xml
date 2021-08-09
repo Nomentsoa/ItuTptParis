@@ -18,6 +18,7 @@
     <string name="prenom_utilisateur">Prénom(s) de l\'utilisateur</string>
     <string name="user_name">Nom d\'utilisateur</string>
     <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
     <string name="mpd">Mot de passe</string>
     <string name="recherche">Recherche...</string>
 
