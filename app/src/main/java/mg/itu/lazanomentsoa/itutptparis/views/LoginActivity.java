@@ -23,7 +23,7 @@ import mg.itu.lazanomentsoa.itutptparis.viewmodel.LoginViewModel;
 public class LoginActivity extends AbstractBaseActivity {
     private final String TAG = LoginActivity.class.getName();
     private LoginViewModel loginViewModel;
-    private Button btnLogin;
+    private Button btnLogin, btnInscription;
     private TextInputEditText etLogin, etPassword;
     private CardView cvChamps, cvFond;
     private TextView tvErreur;
@@ -45,10 +45,40 @@ public class LoginActivity extends AbstractBaseActivity {
 
         // initialisation
         btnLogin = (Button)findViewById(R.id.btn_login);
+        btnInscription = (Button)findViewById(R.id.btn_inscription);
         etLogin = (TextInputEditText)findViewById(R.id.et_login);
         etPassword = (TextInputEditText)findViewById(R.id.et_password);
         tvErreur = (TextView)findViewById(R.id.tv_erreur);
 
+        btnLoginListener();
+        btnInscriptionListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // check if il y a un utilisateur connecté
+        checkConnectedUser();
+
+        tvErreur.setVisibility(View.GONE);
+        etPassword.getText().clear();
+        etLogin.getText().clear();
+        etLogin.requestFocus();
+    }
+
+    private void checkConnectedUser(){
+        if(SessionManager.getInstance(this).getIdConnectedUser() != null){
+            startActivity(new Intent(LoginActivity.this, ContainerActivity.class));
+        }else
+        {
+            cvFond.setVisibility(View.VISIBLE);
+            cvChamps.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    private void btnLoginListener(){
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,27 +118,12 @@ public class LoginActivity extends AbstractBaseActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // check if il y a un utilisateur connecté
-        checkConnectedUser();
-
-        tvErreur.setVisibility(View.GONE);
-        etPassword.getText().clear();
-        etLogin.getText().clear();
-        etLogin.requestFocus();
-    }
-
-    private void checkConnectedUser(){
-        if(SessionManager.getInstance(this).getIdConnectedUser() != null){
-            startActivity(new Intent(LoginActivity.this, ContainerActivity.class));
-        }else
-        {
-            cvFond.setVisibility(View.VISIBLE);
-            cvChamps.setVisibility(View.VISIBLE);
-        }
-
+    private void btnInscriptionListener(){
+        btnInscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, InscriptionActivity.class));
+            }
+        });
     }
 }

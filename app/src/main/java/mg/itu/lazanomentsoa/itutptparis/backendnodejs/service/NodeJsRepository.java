@@ -192,4 +192,41 @@ public class NodeJsRepository {
         return listMutableLiveData;
     }
 
+    // check if userName exist
+    public MutableLiveData<Utilisateur> checkIfUserNameExists(String userName){
+        MutableLiveData<Utilisateur> utilisateurMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.checkIfUserNameExists(userName).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                utilisateurMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateurMutableLiveData.setValue(null);
+            }
+        });
+        return utilisateurMutableLiveData;
+    }
+
+    // create utilisateur
+    public MutableLiveData<Utilisateur> createUtilisateur(Utilisateur utilisateur){
+        MutableLiveData<Utilisateur> utilisateurMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.createUtilisateur(utilisateur).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                Log.i("NodeJSRepository", "tafa => " + response.body());
+                utilisateurMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateurMutableLiveData.setValue(null);
+                Log.i("NodeJSRepository", "erreur => " + t.getMessage());
+            }
+        });
+
+        return  utilisateurMutableLiveData;
+    }
+
 }

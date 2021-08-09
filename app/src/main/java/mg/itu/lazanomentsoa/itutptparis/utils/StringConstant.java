@@ -5,6 +5,8 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringConstant {
     public static String createUniqueTag() {
@@ -19,5 +21,13 @@ public class StringConstant {
         String prixFormated = formatter.format(Double.parseDouble(prix.replaceAll("\\s", "")));
         prixFormated = prixFormated.replace(",", " ");
         return prixFormated;
+    }
+
+    public static final Pattern VALIDE_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean isEmailValide(String emailStr) {
+        Matcher matcher = VALIDE_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
     }
 }

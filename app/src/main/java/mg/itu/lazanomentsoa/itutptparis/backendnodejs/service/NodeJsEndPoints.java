@@ -49,4 +49,11 @@ public interface NodeJsEndPoints {
     @POST("mvtJoueur")
     Call<BaseRetour> createMouvementJoueur(@Body MouvementJoueur mouvementJoueur);
 
+    // checkUserName if exist
+    @GET("utilisateur/login/{login}")
+    Call<Utilisateur> checkIfUserNameExists(@Path("login") String login);
+
+    // createUtilisateur
+    @POST("utilisateur")
+    Call<Utilisateur> createUtilisateur(@Body Utilisateur utilisateur);
 }

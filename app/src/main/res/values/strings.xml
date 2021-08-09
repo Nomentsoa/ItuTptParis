@@ -17,6 +17,11 @@
     <string name="nom_utilisateur">Nom de l\'utilisateur</string>
     <string name="prenom_utilisateur">Prénom(s) de l\'utilisateur</string>
     <string name="user_name">Nom d\'utilisateur</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom(s)</string>
+    <string name="mpd_resaise">Confirmation mot de passe</string>
+    <string name="email">Adresse email</string>
+    <string name="numero_telephone">Numéro télephone</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
     <string name="mpd">Mot de passe</string>
@@ -44,4 +49,10 @@
 
     // list par fragment
     <string name="pas_paris">Vous n\'avez pas encore parier.</string>
+
+    // inscription activity
+    <string name="password_pas_identique">Les mots de passe ne sont pas identiques!</string>
+    <string name="email_erreur">L\'adresse email est incorrect!</string>
+    <string name="user_name_exists">Le nom d\'utilisateur (login) est déjà utilisé!</string>
+    <string name="user_created">Vous étes inscrit!</string>
 </resources>

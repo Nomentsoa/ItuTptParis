@@ -16,6 +16,7 @@
     <dimen name="main_margin">10dp</dimen>
     <dimen name="login_text_size">18sp</dimen>
     <dimen name="margin_top_between_widge_login">20dp</dimen>
+    <dimen name="margin_top_between_widge_inscription">7dp</dimen>
 
     <dimen name="width_profil_header_navigation">75dp</dimen>
     <dimen name="heigth_profil_header_navigation">75dp</dimen>
@@ -30,6 +31,10 @@
     // dimension dialog pari
     <dimen name="txt_pari_dialog">16sp</dimen>
     <dimen name="txt_error">12sp</dimen>
+
+    //dimension inscirption
+    <dimen name="width_cv_inscription">300dp</dimen>
+    <dimen name="heigth_cv_inscription">510dp</dimen>
 
 
 

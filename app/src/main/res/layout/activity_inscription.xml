@@ -1,9 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.InscriptionActivity">
+    tools:context=".views.InscriptionActivity"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/stade_1"
+        android:scaleType="centerCrop"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_fond"
+        android:layout_width="@dimen/width_cv_inscription"
+        android:layout_height="@dimen/heigth_cv_inscription"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:alpha="0.7"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
+        android:visibility="visible"
+        />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_champ"
+        android:layout_width="@dimen/width_cv_inscription"
+        android:layout_height="@dimen/heigth_cv_inscription"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="@dimen/card_view_elevation"
+        app:cardCornerRadius="@dimen/corner_radius"
+        android:visibility="visible"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/main_paddin">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nom"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prenom"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_prenom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_name"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/numero_telephone"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_numero_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mpd"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mpd_resaise"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password_resaisie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/login_text_size"
+                    android:maxLines="1"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_erreur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="erreur"
+                android:textSize="11sp"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_inscription"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/inscription"
+                android:backgroundTint="@color/theme_1"
+                android:alpha="1"
+                android:layout_marginTop="@dimen/margin_top_between_widge_inscription"
+                android:textSize="@dimen/login_text_size"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
