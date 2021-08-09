@@ -18,4 +18,5 @@
     <color name="colorNoirx">#060606</color>
 
     <color name="ed_border">#d4606060</color>
+    <color name="btn_no_cliquable">#4D6980</color>
 </resources>

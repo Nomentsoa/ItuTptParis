@@ -50,7 +50,7 @@ public class ContainerActivity extends AbstractBaseActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,R.id.nav_find_agence, R.id.nav_scane_qrcode, R.id.nav_gallery)
+                R.id.nav_home,R.id.nav_paris_list,R.id.nav_find_agence, R.id.nav_scane_qrcode, R.id.nav_gallery)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_accueil);

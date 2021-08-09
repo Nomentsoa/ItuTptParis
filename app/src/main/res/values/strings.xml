@@ -9,6 +9,7 @@
     <string name="action_deconnexion">Déconnexion</string>
 
     <string name="menu_accueil">Accueil</string>
+    <string name="menu_paris_list">Liste des paris</string>
     <string name="menu_profil">Profil</string>
     <string name="menu_map">Agence</string>
     <string name="menu_qrcde">Scanne QRCode</string>
@@ -39,4 +40,7 @@
     <string name="solde_insuffisant">Votre solde est insuffisant !</string>
     <string name="pari_cree">Pari créé !</string>
     <string name="error_mouvement_creation">Mouvement du joueur n\'est pas enregistré !</string>
+
+    // list par fragment
+    <string name="pas_paris">Vous n\'avez pas encore parier.</string>
 </resources>

@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_accueil" />
 
     <fragment
+        android:id="@+id/nav_paris_list"
+        android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.ParisListFragment"
+        android:label="@string/menu_paris_list"
+        tools:layout="@layout/fragment_paris_list" />
+
+    <fragment
         android:id="@+id/nav_gallery"
         android:name="mg.itu.lazanomentsoa.itutptparis.views.fragments.ProfilFragment"
         android:label="@string/menu_profil"

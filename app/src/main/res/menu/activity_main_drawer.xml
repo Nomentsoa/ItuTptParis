@@ -10,6 +10,11 @@
             android:title="@string/menu_accueil" />
 
         <item
+            android:id="@+id/nav_paris_list"
+            android:icon="@drawable/list_menu_24"
+            android:title="@string/menu_paris_list" />
+
+        <item
             android:id="@+id/nav_find_agence"
             android:icon="@drawable/ic_baseline_map_24"
             android:title="@string/menu_map" />
