@@ -33,6 +33,10 @@ public interface NodeJsEndPoints {
     @POST("pari")
     Call<BaseRetour> createPari(@Body Pari pari);
 
+    //get all pari byiduser
+    @GET("pari/idUser/{idUser}")
+    Call<List<Pari>> getAllParisByIdUser(@Path("idUser") String idUser);
+
     // localisation agence
     @GET("localisationAgence")
     Call<List<LocalisationAgence>> getAllLocalisationAgence();

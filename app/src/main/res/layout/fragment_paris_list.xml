@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:id="@+id/tv_match_null"
+        android:id="@+id/tv_paris_null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
         android:visibility="gone"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_accueil_main"
+        android:id="@+id/ll_pari_non_null"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -91,7 +91,7 @@
             android:padding="@dimen/main_paddin">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_match"
+                android:id="@+id/rv_paris"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_paris"

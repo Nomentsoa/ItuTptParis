@@ -175,4 +175,21 @@ public class NodeJsRepository {
         return baseRetourMutableLiveData;
     }
 
+    // récuperation des liste des paris by iduser
+    public MutableLiveData<List<Pari>> getAllParisByIdUser(String idUser){
+        MutableLiveData<List<Pari>> listMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.getAllParisByIdUser(idUser).enqueue(new Callback<List<Pari>>() {
+            @Override
+            public void onResponse(Call<List<Pari>> call, Response<List<Pari>> response) {
+                listMutableLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Pari>> call, Throwable t) {
+                listMutableLiveData.setValue(null);
+            }
+        });
+        return listMutableLiveData;
+    }
+
 }

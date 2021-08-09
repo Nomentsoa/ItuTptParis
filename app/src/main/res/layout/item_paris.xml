@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/main_paddin">
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -82,7 +83,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Equipe choisie: "
+                android:text="Equipe gagnante: "
                 android:textColor="@color/colorNoirx"
                 android:textSize="@dimen/size_text_equipe" />
 
@@ -196,9 +197,8 @@
         android:layout_marginLeft="@dimen/main_margin"
         android:layout_marginRight="@dimen/main_margin"
         android:background="@color/ed_border"
-        app:layout_constraintBottom_toBottomOf="@id/ll_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_detail"
+        app:layout_constraintTop_toBottomOf="@+id/ll_somme_and_cote"
         android:layout_marginTop="5dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
