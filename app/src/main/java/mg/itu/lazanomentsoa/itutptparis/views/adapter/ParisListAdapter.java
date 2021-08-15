@@ -49,18 +49,22 @@ public class ParisListAdapter extends RecyclerView.Adapter<ParisListAdapter.View
             holder.tvEquipeGagnante.setText(pari.getEquipe().getNom());
 
         holder.tvSommeMise.setText(StringConstant.getThousantNumberByString(pari.getMise()+"") + " Ar");
-        qrCodeViewModel.getMatchById(pari.getIdMatch()).observe(lifecycleOwner, retourMatch -> {
-            if(retourMatch != null){
-                String date = StringConstant.dateFormat.format(retourMatch.getMatch().getDate());
-                holder.tvDateHeure.setText(date + " à " + retourMatch.getMatch().getHeure());
-                holder.tvCategorie.setText(retourMatch.getMatch().getCategorie().getNom());
+        qrCodeViewModel.getMatchById(pari.getIdMatch()).observe(lifecycleOwner, match -> {
+            if(match != null){
 
-                if(pari.getEquipe() == null)
-                    holder.tvCote.setText(retourMatch.getMatch().getCoteMatchNull()+"");
-                else if (pari.getEquipe().getNom().equals(retourMatch.getMatch().getEquipe1().getNom()))
-                    holder.tvCote.setText(retourMatch.getMatch().getCoteEquipe1()+"");
-                else
-                    holder.tvCote.setText(retourMatch.getMatch().getCoteEquip2()+"");
+                    String date = StringConstant.dateFormat.format(match.getDate());
+                    holder.tvDateHeure.setText(date + " à " + match.getHeure());
+                    holder.tvCategorie.setText(match.getCategorie().getNom());
+
+                    if(pari.getEquipe() == null)
+                        holder.tvCote.setText(match.getCoteMatchNull()+"");
+                    else if (pari.getEquipe().getNom().equals(match.getEquipe1().getNom()))
+                        holder.tvCote.setText(match.getCoteEquipe1()+"");
+                    else
+                        holder.tvCote.setText(match.getCoteEquip2()+"");
+
+
+
             }
         });
     }

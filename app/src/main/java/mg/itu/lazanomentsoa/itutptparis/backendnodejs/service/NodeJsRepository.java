@@ -12,7 +12,6 @@ import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.MouvementJoueur;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
-import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Solde;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
@@ -87,16 +86,16 @@ public class NodeJsRepository {
 
 
     // récuperation match par id
-    public MutableLiveData<RetourMatch> getMatchById(String id){
-        MutableLiveData<RetourMatch> matchMutableLiveData = new MutableLiveData<>();
-        nodeJsEndPoints.getMatchById(id).enqueue(new Callback<RetourMatch>() {
+    public MutableLiveData<Match> getMatchById(String id){
+        MutableLiveData<Match> matchMutableLiveData = new MutableLiveData<>();
+        nodeJsEndPoints.getMatchById(id).enqueue(new Callback<Match>() {
             @Override
-            public void onResponse(Call<RetourMatch> call, Response<RetourMatch> response) {
+            public void onResponse(Call<Match> call, Response<Match> response) {
                 matchMutableLiveData.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<RetourMatch> call, Throwable t) {
+            public void onFailure(Call<Match> call, Throwable t) {
                 matchMutableLiveData.setValue(null);
             }
         });

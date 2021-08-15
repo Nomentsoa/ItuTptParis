@@ -82,29 +82,27 @@ public class QrcodeFragment extends AbstractBaseFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(cvCam.getVisibility() == View.GONE){
                     showLoading(false);
-                    qrCodeViewModel.getMatchById(s.toString()).observe(lifecycleOwner, retourMatch -> {
+                    qrCodeViewModel.getMatchById(s.toString()).observe(lifecycleOwner, match -> {
 
-                        if (retourMatch == null) {
+                        if (match == null) {
                             tvNoMatch.setText(getResources().getText(R.string.no_match));
                         }else{
-                            if(retourMatch.getMatch() == null){
-                                tvNoMatch.setText(getResources().getText(R.string.no_match));
-                            }else{
+
                                 tvNoMatch.setVisibility(View.GONE);
                                 clMath.setVisibility(View.VISIBLE);
 
-                                String dateMatch = StringConstant.dateFormat.format(retourMatch.getMatch().getDate());
-                                tvDateHeure.setText(dateMatch + " à " + retourMatch.getMatch().getHeure());
-                                tvNomEquipe1.setText(retourMatch.getMatch().getEquipe1().getNom());
-                                tvNomEquipe2.setText(retourMatch.getMatch().getEquipe2().getNom());
-                                tvLabelEquipe1.setText(retourMatch.getMatch().getEquipe1().getNom());
-                                tvLabelEquipe2.setText(retourMatch.getMatch().getEquipe2().getNom());
-                                tvCoteEquipe1.setText(retourMatch.getMatch().getCoteEquipe1()+"");
-                                tvCoteEquipe2.setText(retourMatch.getMatch().getCoteEquip2()+"");
-                                tvCoteNull.setText(retourMatch.getMatch().getCoteMatchNull()+"");
+                                String dateMatch = StringConstant.dateFormat.format(match.getDate());
+                                tvDateHeure.setText(dateMatch + " à " + match.getHeure());
+                                tvNomEquipe1.setText(match.getEquipe1().getNom());
+                                tvNomEquipe2.setText(match.getEquipe2().getNom());
+                                tvLabelEquipe1.setText(match.getEquipe1().getNom());
+                                tvLabelEquipe2.setText(match.getEquipe2().getNom());
+                                tvCoteEquipe1.setText(match.getCoteEquipe1()+"");
+                                tvCoteEquipe2.setText(match.getCoteEquip2()+"");
+                                tvCoteNull.setText(match.getCoteMatchNull()+"");
 
-                               listenerButtonMatch(retourMatch.getMatch());
-                            }
+                               listenerButtonMatch(match);
+
                         }
                         dismissLoading();
                     });

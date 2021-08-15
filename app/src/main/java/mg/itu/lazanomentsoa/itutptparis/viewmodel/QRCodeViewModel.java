@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.jetbrains.annotations.NotNull;
 
-import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
+import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.service.NodeJsRepository;
 
 public class QRCodeViewModel extends AndroidViewModel {
@@ -22,7 +22,7 @@ public class QRCodeViewModel extends AndroidViewModel {
         nodeJsRepository = NodeJsRepository.getNodeJsRepository();
     }
 
-    public MutableLiveData<RetourMatch> getMatchById(String id){
+    public MutableLiveData<Match> getMatchById(String id){
         return nodeJsRepository.getMatchById(id);
     }
 }

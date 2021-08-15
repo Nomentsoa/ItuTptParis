@@ -8,7 +8,6 @@ import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.LoginRequestBody;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Match;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.MouvementJoueur;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Pari;
-import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.RetourMatch;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Solde;
 import mg.itu.lazanomentsoa.itutptparis.backendnodejs.models.Utilisateur;
 import retrofit2.Call;
@@ -27,7 +26,7 @@ public interface NodeJsEndPoints {
     Call<List<Match>> getAllMatchAVenir();
 
     @GET("match/{id}")
-    Call<RetourMatch> getMatchById(@Path("id") String id);
+    Call<Match> getMatchById(@Path("id") String id);
 
     //create pari
     @POST("pari")
